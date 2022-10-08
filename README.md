@@ -1,3 +1,3 @@
 # Na Trave API
 
-Projeto desenvolvido no evento Full Stack Challenge
+API para ```https://natrave-api-snowy.vercel.app/```
