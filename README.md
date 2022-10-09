@@ -1,3 +1,3 @@
 # Na Trave API
 
-API para comunicação com o ```https://natrave-api-snowy.vercel.app/```
+API para comunicação com o ```https://natrave-web-mu.vercel.app/```
