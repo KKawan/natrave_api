@@ -16,8 +16,24 @@ export const create = async ctx => {
     }
 
     try {
-        const { password, ...user } = await prisma.user.create({ data });
-        ctx.body = user;
+        const { user } = await prisma.user.create({ data });
+
+        const { email } = data;
+        const login = await prisma.user.findUnique({
+            where: { email }
+        });
+        const { password, ...result } = login;
+
+        const accessToken = jwt.sign({
+            sub: login.id,
+            name: login.name,
+            expiresIn: "7d"
+        }, process.env.JWT_SECRET)
+    
+        ctx.body = {
+            user: result,
+            accessToken
+        }
         ctx.status = 201;
     } catch (e) {
         ctx.body = e;
